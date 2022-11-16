@@ -22,6 +22,7 @@ class MovieForm extends Component<MovieFormProps> {
     this.props.onSubmit(
       {id: this.state.id, title: this.state.title}
     )
+    this.setState({id: "", title: ""});
   }
 
   render() {

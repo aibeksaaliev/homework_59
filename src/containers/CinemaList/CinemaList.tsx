@@ -18,27 +18,22 @@ class CinemaList extends Component<{}, State> {
   }
 
   deleteMovie = (id: string) => {
-    const moviesCopy = {...this.state};
-    moviesCopy.movies.map(movie => {
-      if (id === movie.id) {
-        const index: number = moviesCopy.movies.indexOf(movie);
-        moviesCopy.movies.splice(index, 1);
-      }
-      return moviesCopy;
-    });
-    this.setState(moviesCopy);
+    const copyMovies = [...this.state.movies];
+    const index = this.state.movies.findIndex(item => item.id === id);
+    copyMovies.splice(index, 1);
+    console.log(this.state);
+    this.setState({movies: copyMovies});
   };
 
   editMovie = (id: string, value: string) => {
-    const moviesCopy = {...this.state};
-    moviesCopy.movies.map(movie => {
-      if (id === movie.id) {
-        movie.title = value;
-      }
-      return moviesCopy;
-    });
-    this.setState(moviesCopy);
+    const copyMovies = [...this.state.movies];
+    const index = this.state.movies.findIndex(item => item.id === id);
+    const copyMovie = {...this.state.movies[index]};
+    copyMovie.title = value;
+    copyMovies[index] = copyMovie;
+    this.setState({movies: copyMovies});
   }
+
 
   render() {
     return (

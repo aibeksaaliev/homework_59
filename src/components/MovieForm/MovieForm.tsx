@@ -35,7 +35,7 @@ class MovieForm extends Component<MovieFormProps> {
           id="title"
           name="title"
           onChange={(e) => this.onInputChange(e)}
-          defaultValue={this.state.title}
+          value={this.state.title}
           className="form-control"
           placeholder="Title of the film"/>
         <button

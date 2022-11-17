@@ -7,10 +7,22 @@ interface MovieCardProps {
   onEdit: (id: string, value: string) => void;
 }
 
-class MovieCard extends Component<MovieCardProps> {
-  onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    return e.target.value;
+interface State {
+  movie: FilmCard
+}
+
+class MovieCard extends Component<MovieCardProps, State> {
+  state: State = {
+    movie: {
+      id: this.props.movie.id,
+      title: this.props.movie.title
+    }
   }
+
+  shouldComponentUpdate(nextProps: Readonly<MovieCardProps>, nextState: Readonly<State>): boolean {
+    return nextProps.movie.title !== nextState.movie.title;
+  }
+
 
   render() {
     return (
@@ -18,8 +30,8 @@ class MovieCard extends Component<MovieCardProps> {
         <input
           className="border-0 text-capitalize"
           type="text"
-          defaultValue={this.props.movie.title}
-          onChange={(e) => this.props.onEdit(this.props.movie.id, this.onInputChange(e))}/>
+          value={this.props.movie.title}
+          onChange={(e) => this.props.onEdit(this.props.movie.id, e.target.value)}/>
         <button onClick={() => this.props.removeMovie(this.props.movie.id)}>Delete</button>
       </div>
     );

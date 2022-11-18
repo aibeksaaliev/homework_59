@@ -34,11 +34,11 @@ const FreeJoke = () => {
   };
 
   return (
-    <div className="d-flex flex-column text-center">
+    <div className="d-flex flex-column text-center p-3">
+      <GetJokeButton onClick={changeButtonStatus}/>
       {jokesFromChuck.map(joke => {
         return <JokeCard key={joke.id} joke={joke.value}/>
       })}
-      <GetJokeButton onClick={changeButtonStatus}/>
     </div>
   );
 };

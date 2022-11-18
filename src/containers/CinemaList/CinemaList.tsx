@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './CinemaList.css';
 import MovieForm from "../../components/MovieForm/MovieForm";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import {FilmCard} from "../../types";
@@ -21,7 +20,6 @@ class CinemaList extends Component<{}, State> {
     const copyMovies = [...this.state.movies];
     const index = this.state.movies.findIndex(item => item.id === id);
     copyMovies.splice(index, 1);
-    console.log(this.state);
     this.setState({movies: copyMovies});
   };
 
@@ -37,8 +35,8 @@ class CinemaList extends Component<{}, State> {
 
   render() {
     return (
-      <div className="d-flex flex-column text-center">
-        Cinema List
+      <div className="d-flex flex-column text-center p-3">
+        <span className="text-uppercase mb-2">Cinema List (Class)</span>
         <MovieForm onSubmit={this.addMovie}/>
         {this.state.movies.map(movie => {
           return <MovieCard

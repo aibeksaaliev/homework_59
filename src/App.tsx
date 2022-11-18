@@ -6,8 +6,8 @@ import FreeJoke from "./containers/FreeJoke/FreeJoke";
 function App() {
   return (
     <>
-      {/*<CinemaList/>*/}
-      {/*<CinemaListF/>*/}
+      <CinemaList/>
+      <CinemaListF/>
       <FreeJoke/>
     </>
   );

@@ -7,32 +7,23 @@ interface MovieCardProps {
   onEdit: (id: string, value: string) => void;
 }
 
-interface State {
-  movie: FilmCard
-}
+class MovieCard extends Component<MovieCardProps> {
 
-class MovieCard extends Component<MovieCardProps, State> {
-  state: State = {
-    movie: {
-      id: this.props.movie.id,
-      title: this.props.movie.title
-    }
+  shouldComponentUpdate(nextProps: Readonly<MovieCardProps>): boolean {
+    return nextProps.movie.title !== this.props.movie.title;
   }
-
-  shouldComponentUpdate(nextProps: Readonly<MovieCardProps>, nextState: Readonly<State>): boolean {
-    return nextProps.movie.title !== nextState.movie.title;
-  }
-
 
   render() {
     return (
-      <div className="d-flex justify-content-between">
+      <div className="d-flex justify-content-between mb-2">
         <input
-          className="border-0 text-capitalize"
+          className="text-capitalize form-control"
           type="text"
           value={this.props.movie.title}
           onChange={(e) => this.props.onEdit(this.props.movie.id, e.target.value)}/>
-        <button onClick={() => this.props.removeMovie(this.props.movie.id)}>Delete</button>
+        <button
+          className="btn btn-outline-secondary"
+          onClick={() => this.props.removeMovie(this.props.movie.id)}>Delete</button>
       </div>
     );
   }

@@ -33,8 +33,8 @@ const CinemaListF = () => {
   };
 
   return (
-    <div className="d-flex flex-column text-center">
-      CinemaListFunction
+    <div className="d-flex flex-column text-center p-3">
+      <span className="text-uppercase mb-2">Cinema List (Function)</span>
       <MovieFormF onSubmit={addMovie}/>
       {movies.map((movie: FilmCard) => {
         return (

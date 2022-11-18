@@ -6,18 +6,19 @@ interface MovieFormFProps {
 }
 
 const MovieFormF: React.FC<MovieFormFProps> = ({onSubmit}) => {
-  const [movie, setMovie] = useState<FilmCard>({
-    id: "",
-    title: ""
-  });
+  const [movie, setMovie] = useState('');
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setMovie(prevState => ({...prevState, id: Math.random().toString(), title: e.target.value}));
+    setMovie(e.target.value);
   };
 
   const onFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit({...movie});
+    onSubmit({
+      id: Math.random().toString(),
+      title: movie,
+    });
+    setMovie('')
   };
 
 
@@ -29,12 +30,12 @@ const MovieFormF: React.FC<MovieFormFProps> = ({onSubmit}) => {
         type="text"
         id="title"
         name="title"
-        value={movie.title}
+        value={movie}
         onChange={onInputChange}
         className="form-control"
         placeholder="Title of the film"/>
       <button
-        className="btn btn-outline-secondary"
+        className="btn btn-dark"
         type="submit"
       >
         Add

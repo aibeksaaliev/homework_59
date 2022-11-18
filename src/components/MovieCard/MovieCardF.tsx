@@ -9,13 +9,14 @@ interface MovieCardFProps {
 
 const MovieCardF: React.FC<MovieCardFProps> = ({movie, removeMovie, onEdit}) => {
   return (
-    <div className="d-flex justify-content-between">
+    <div className="d-flex justify-content-between mb-2">
       <input
-        className="border-0 text-capitalize"
+        className="text-capitalize form-control"
         type="text"
         value={movie.title}
         onChange={onEdit}/>
       <button
+        className="btn btn-dark"
         onClick={removeMovie}
       >
         Delete

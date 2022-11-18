@@ -5,10 +5,9 @@ interface JokeCardProps {
 }
 
 const JokeCard: React.FC<JokeCardProps> = ({joke}) => {
-  console.log("render");
   return (
-    <div>
-      <p>{joke}</p>
+    <div className="border border-1 border-dark p-2 mb-3 rounded-2">
+      <p className="m-0">{joke}</p>
     </div>
   );
 };

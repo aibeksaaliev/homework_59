@@ -9,10 +9,11 @@ const compareProps = (prevProps: GetJokeButtonProps, nextProps: GetJokeButtonPro
 };
 
 const GetJokeButton: React.FC<GetJokeButtonProps> = React.memo(({onClick}) => {
-  console.log("render button");
   return (
     <>
-      <button onClick={onClick}>Get joke</button>
+      <button
+        className="btn btn-danger w-25 mx-auto mb-3"
+        onClick={onClick}>Get joke</button>
     </>
   );
 }, compareProps)
